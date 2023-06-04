@@ -16,6 +16,8 @@ class DarknetService(private val darknetDirectoryService: DarknetDirectoryServic
             .waitFor()
         darknetDirectoryService.deleteImageList()
 
-        return result.toString()
+        val resultFile = darknetDirectoryService.getDarknetDirectory().resolve(darknetDirectoryService.getResultFilePath())
+
+        return resultFile.readText()
     }
 }
